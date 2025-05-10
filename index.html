@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eatsy Burgers</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .navbar-brand {
+      color: #f44336 !important;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: #f44336 !important;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      margin: 2.5rem 0;
+      text-align: center;
+      color: #f44336;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .price {
+      color: #f44336;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .quantity-input {
+      width: 60px;
+      font-size: 0.9rem;
+    }
+
+    .add-btn {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      background-color: #f44336;
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      color: white;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-btn:hover {
+      background-color: #d32f2f;
+    }
+
+    .custom-popup {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1055;
+      background-color: #f44336;
+      padding: 15px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      color: #fff;
+      text-align: center;
+    }
+
+    .custom-popup button {
+      border: none;
+      background: #fff;
+      color: #f44336;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 5px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .custom-popup.d-none {
+      display: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .pulse {
+      animation: pulse 0.4s ease-in-out;
+    }
+
+    @media (max-width: 576px) {
+      .col-6 {
+        flex: 0 0 auto;
+        width: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3 bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="#">🍔 Burger Kosova</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item"><a class="nav-link px-3" href="index.html">Porosit</a></li>
+              <li class="nav-item"><a class="nav-link px-3" href="about.html">Rreth nesh</a></li>
+              <li class="nav-item"><a class="nav-link px-3" href="lokacioni.html">Lokacioni</a></li>
+              <li class="nav-item"><a class="nav-link px-3" href="galeria.html">Galeria</a></li>
+
+            </ul>
+            <a href="porosit.html" class="btn position-relative">
+              <i class="bi bi-cart4 fs-4" style="color: #f44336;"></i>
+              <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">0</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    
+
+  <div class="container my-4">
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#burgerat" class="btn btn-outline-danger">🍔 Burgera</a>
+      <a href="#pijet" class="btn btn-outline-danger">🥤 Pije</a>
+      <a href="#sosat" class="btn btn-outline-danger">🧂 Sosa</a>
+    </div>
+  </div>
+
+  <!-- Burgerat -->
+  <section id="burgerat" class="container my-5">
+    <h2 class="section-title">🍔 Burgera</h2>
+    <div class="row g-4">
+      <!-- Kartat e burgerave origjinale -->
+      <div class="col-lg-3 col-md-4 col-6 d-flex">
+        <div class="card w-100">
+          <img src="images/GoldenBurger.jpg" class="card-img-top" alt="Golden Burger">
+          <div class="card-body">
+            <h5 class="card-title">Golden Burger</h5>
+            <p class="price">$3.30</p>
+            <input type="number" min="1" value="1" class="form-control quantity-input" />
+            <button class="add-btn" data-name="Golden Burger" data-price="3.3">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6 d-flex">
+        <div class="card w-100">
+          <img src="images/Hebs-Chicken-Burger-2.jpg" class="card-img-top" alt="Chicken Burger">
+          <div class="card-body">
+            <h5 class="card-title">Chicken Burger</h5>
+            <p class="price">$2.30</p>
+            <input type="number" min="1" value="1" class="form-control quantity-input" />
+            <button class="add-btn" data-name="Chicken Burger" data-price="2.3">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6 d-flex">
+        <div class="card w-100">
+          <img src="images/Hebs-Giant-Beef.jpg" class="card-img-top" alt="Giant Beef Burger">
+          <div class="card-body">
+            <h5 class="card-title">Giant Beef Burger</h5>
+            <p class="price">$2.30</p>
+            <input type="number" min="1" value="1" class="form-control quantity-input" />
+            <button class="add-btn" data-name="Giant Beef Burger" data-price="2.3">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6 d-flex">
+        <div class="card w-100">
+          <img src="images/Fries.jpg" class="card-img-top" alt="Pomfrita">
+          <div class="card-body">
+            <h5 class="card-title">Pomfrita</h5>
+            <p class="price">$2.30</p>
+            <input type="number" min="1" value="1" class="form-control quantity-input" />
+            <button class="add-btn" data-name="Pomfrita" data-price="2.3">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6 d-flex">
+        <div class="card w-100">
+          <img src="images/Chicken-Salad-2.jpg" class="card-img-top" alt="Chicken Salad">
+          <div class="card-body">
+            <h5 class="card-title">Chicken Salad</h5>
+            <p class="price">$2.30</p>
+            <input type="number" min="1" value="1" class="form-control quantity-input" />
+            <button class="add-btn" data-name="Chicken Salad" data-price="2.3">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6 d-flex">
+        <div class="card w-100">
+          <img src="images/Mega-Cheese-Burger.jpg" class="card-img-top" alt=" Mega Chesse Burger">
+          <div class="card-body">
+            <h5 class="card-title"> Mega Chesse Burger</h5>
+            <p class="price">$2.30</p>
+            <input type="number" min="1" value="1" class="form-control quantity-input" />
+            <button class="add-btn" data-name=" Mega Chesse Burger" data-price="2.3">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6 d-flex">
+        <div class="card w-100">
+          <img src="images/Crispy-Onion-Burger-2.jpg" class="card-img-top" alt=" Crispy Onion Burger">
+          <div class="card-body">
+            <h5 class="card-title"> Crispy Onion Burger</h5>
+            <p class="price">$2.30</p>
+            <input type="number" min="1" value="1" class="form-control quantity-input" />
+            <button class="add-btn" data-name=" Crispy Onion Burger" data-price="2.3">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6 d-flex">
+        <div class="card w-100">
+          <img src="images/Hebs-Chicken-Sandwich.jpg" class="card-img-top" alt="Chicken Sandwich">
+          <div class="card-body">
+            <h5 class="card-title">Chicken Sandwich</h5>
+            <p class="price">$2.20</p>
+            <input type="number" min="1" value="1" class="form-control quantity-input" />
+            <button class="add-btn" data-name="Chicken Sandwich" data-price="2.2">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pijet -->
+  <section id="pijet" class="container my-5">
+    <h2 class="section-title">🥤 Pijet</h2>
+    <div class="row g-4">
+        <div class="col-lg-3 col-md-4 col-6 d-flex">
+            <div class="card w-100">
+              <img src="images/pepsi.jpg" class="card-img-top" alt=" Pepsi">
+              <div class="card-body">
+                <h5 class="card-title"> Pepsi</h5>
+                <p class="price">$1.0</p>
+                <input type="number" min="1" value="1" class="form-control quantity-input" />
+                <button class="add-btn" data-name=" Pepsi" data-price="1">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-6 d-flex">
+            <div class="card w-100">
+              <img src="images/cocacola.png" class="card-img-top" alt=" Coca Cola">
+              <div class="card-body">
+                <h5 class="card-title"> Coca Cola</h5>
+                <p class="price">$1.20</p>
+                <input type="number" min="1" value="1" class="form-control quantity-input" />
+                <button class="add-btn" data-name=" Coca Cola" data-price="1.2">+</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 col-md-4 col-6 d-flex">
+            <div class="card w-100">
+              <img src="images/cczero.png" class="card-img-top" alt=" Coca Cola Zero">
+              <div class="card-body">
+                <h5 class="card-title"> Coca Cola Zero</h5>
+                <p class="price">$1.20</p>
+                <input type="number" min="1" value="1" class="form-control quantity-input" />
+                <button class="add-btn" data-name=" Coca Cola Zero" data-price="1.2">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-6 d-flex">
+            <div class="card w-100">
+              <img src="images/uje.png" class="card-img-top" alt=" Ujë Rugove">
+              <div class="card-body">
+                <h5 class="card-title"> Ujë Rugove</h5>
+                <p class="price">$0.7</p>
+                <input type="number" min="1" value="1" class="form-control quantity-input" />
+                <button class="add-btn" data-name=" Ujë Rugove" data-price="0.7">+</button>
+              </div>
+            </div>
+          </div>
+
+
+
+
+    </div>
+  </section>
+
+  <!-- Sosa -->
+  <section id="sosat" class="container my-5">
+    <h2 class="section-title">🧂 Sosa</h2>
+    <div class="row g-4">
+      
+        
+        
+        <div class="col-lg-3 col-md-4 col-6 d-flex">
+            <div class="card w-100">
+              <img src="images/Home-Sauce.jpg" class="card-img-top" alt=" Sos Home">
+              <div class="card-body">
+                <h5 class="card-title"> Sos Home</h5>
+                <p class="price">$0.3</p>
+                <input type="number" min="1" value="1" class="form-control quantity-input" />
+                <button class="add-btn" data-name=" Sos Home" data-price="0.3">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-6 d-flex">
+            <div class="card w-100">
+              <img src="images/garlic.jpg" class="card-img-top" alt=" Sos Garlic">
+              <div class="card-body">
+                <h5 class="card-title"> Sos Garlic</h5>
+                <p class="price">$0.3</p>
+                <input type="number" min="1" value="1" class="form-control quantity-input" />
+                <button class="add-btn" data-name=" Sos Garlic" data-price="0.3">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-6 d-flex">
+            <div class="card w-100">
+              <img src="images/2.jpg" class="card-img-top" alt=" Ketchup">
+              <div class="card-body">
+                <h5 class="card-title"> Ketchup</h5>
+                <p class="price">$0.3</p>
+                <input type="number" min="1" value="1" class="form-control quantity-input" />
+                <button class="add-btn" data-name=" Ketchup" data-price="0.3">+</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 col-md-4 col-6 d-flex">
+            <div class="card w-100">
+              <img src="images/1.jpg" class="card-img-top" alt=" Majonez">
+              <div class="card-body">
+                <h5 class="card-title"> Majonez</h5>
+                <p class="price">$0.3</p>
+                <input type="number" min="1" value="1" class="form-control quantity-input" />
+                <button class="add-btn" data-name=" Majonez" data-price="0.3">+</button>
+              </div>
+            </div>
+          </div>
+
+
+
+    </div>
+  </section>
+
+  <footer class="bg-white border-top mt-5 py-4">
+    <div class="container text-center">
+      <p class="mb-1" style="color: #f44336; font-weight: 600;">🍔 Burger Kosova</p>
+      <p class="mb-1 text-muted">Shije e paharrueshme në çdo kafshatë</p>
+      <div class="d-flex justify-content-center gap-3 mb-2">
+        <a href="#" class="text-muted"><i class="bi bi-facebook fs-5"></i></a>
+        <a href="#" class="text-muted"><i class="bi bi-instagram fs-5"></i></a>
+        <a href="#" class="text-muted"><i class="bi bi-geo-alt-fill fs-5"></i></a>
+      </div>
+      <p class="text-muted small mb-0">&copy; 2025 Burger Kosova. Të gjitha të drejtat e rezervuara.</p>
+    </div>
+  </footer>
+
+  <div id="custom-popup" class="custom-popup d-none">
+    <div id="popup-message" style="margin-bottom: 10px;"></div>
+    <button onclick="window.location.href='porosit.html'">VAZHDO ME POROSINË!</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cartCount = document.getElementById('cart-count');
+      const buttons = document.querySelectorAll('.add-btn');
+      const popup = document.getElementById("custom-popup");
+      const message = document.getElementById("popup-message");
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      function showPopup(name, quantity) {
+        message.textContent = `${name} u shtua në shportë (${quantity} copë)`;
+        popup.classList.remove("d-none");
+      }
+
+      function updateCartCount() {
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        cartCount.textContent = count;
+        cartCount.classList.add('pulse');
+        setTimeout(() => cartCount.classList.remove('pulse'), 400);
+      }
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const name = btn.getAttribute('data-name');
+          const price = parseFloat(btn.getAttribute('data-price'));
+          const quantityInput = btn.previousElementSibling;
+          const quantity = parseInt(quantityInput.value) || 1;
+
+          const existing = cart.find(item => item.name === name);
+          if (existing) {
+            existing.quantity += quantity;
+          } else {
+            cart.push({ name, price, quantity });
+          }
+
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          showPopup(name, quantity);
+        });
+      });
+
+      updateCartCount();
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

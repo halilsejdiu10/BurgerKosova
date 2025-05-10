@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ofertat e Fundit - Burger Kosova</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+    }
+
+    .navbar-brand {
+      color: #f44336 !important;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: #f44336 !important;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem;
+      text-align: center;
+      margin: 2.5rem 0 1rem;
+      color: #f44336;
+    }
+
+    .offer-card {
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .offer-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .offer-body {
+      padding: 1.2rem;
+    }
+
+    .offer-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #f44336;
+    }
+
+    .offer-description {
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      color: #555;
+    }
+
+    .offer-date {
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 0.4rem;
+    }
+
+    .order-btn {
+      background-color: #f44336;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      color: #fff;
+      border-radius: 10px;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .order-btn:hover {
+      background-color: #d32f2f;
+    }
+
+    .carousel-item img {
+      height: 400px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+      background-color: rgba(244, 67, 54, 0.9);
+    }
+
+    .carousel:hover .carousel-control-prev,
+    .carousel:hover .carousel-control-next {
+      opacity: 1;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    footer {
+      background-color: #fff;
+      padding: 2rem 0;
+      margin-top: 4rem;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3 bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🍔 Burger Kosova</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link px-3" href="index.html">Porosit</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="about.html">Rreth nesh</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="lokacioni.html">Lokacioni</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="galeria.html">Galeria</a></li>
+        </ul>
+        <a href="porosit.html" class="btn position-relative">
+          <i class="bi bi-cart4 fs-4" style="color: #f44336;"></i>
+          <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Slider -->
+  <div id="ofertaSlider" class="carousel slide container mt-4" data-bs-ride="carousel">
+    <div class="carousel-inner rounded-4">
+      <div class="carousel-item active">
+        <img src="images/oferta3.png" class="d-block w-100" alt="Oferta 1">
+      </div>
+      <div class="carousel-item">
+        <img src="images/oferta2.png" class="d-block w-100" alt="Oferta 2">
+      </div>
+      <div class="carousel-item">
+        <img src="images/oferta3.png" class="d-block w-100" alt="Oferta 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#ofertaSlider" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#ofertaSlider" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="container">
+    <h2 class="section-title">Galeria e ushqimeve</h2>
+    <div class="row g-4">
+    </div>
+  </div>
+
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-1 fw-bold" style="color: #f44336;">🍔 Burger Kosova</p>
+      <p class="mb-0 text-muted">Na ndiqni për më shumë oferta!</p>
+      <div class="d-flex justify-content-center gap-3 mt-2">
+        <a href="#" class="text-muted"><i class="bi bi-facebook fs-5"></i></a>
+        <a href="#" class="text-muted"><i class="bi bi-instagram fs-5"></i></a>
+        <a href="#" class="text-muted"><i class="bi bi-geo-alt-fill fs-5"></i></a>
+      </div>
+      <p class="text-muted small mt-3">&copy; 2025 Burger Kosova. Të gjitha të drejtat e rezervuara.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

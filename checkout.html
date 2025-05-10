@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Burger Kosova</title>
+
+  <!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .navbar-brand {
+      color: #f44336 !important;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: #f44336 !important;
+    }
+
+    .checkout-title {
+      text-align: center;
+      color: #f44336;
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 2rem 0;
+    }
+
+    .form-control:focus {
+      border-color: #f44336;
+      box-shadow: 0 0 0 0.2rem rgba(244, 67, 54, 0.25);
+    }
+
+    .btn-checkout {
+      background-color: #f44336;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-checkout:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3 bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🍔 Burger Kosova</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link px-3" href="index.html">Porosit</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="about.html">Rreth nesh</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="lokacioni.html">Lokacioni</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="galeria.html">Galeria</a></li>
+
+        </ul>
+        <a href="#" class="btn position-relative">
+          <i class="bi bi-cart4 fs-4" style="color: #f44336;"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Checkout Form -->
+  <div class="container">
+    <h2 class="checkout-title">Përfundo Porosinë</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <form>
+          <div class="mb-3">
+            <label for="firstName" class="form-label">Emri</label>
+            <input type="text" class="form-control" id="firstName" required />
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Mbiemri</label>
+            <input type="text" class="form-control" id="lastName" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Emaili</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Telefoni</label>
+            <input type="tel" class="form-control" id="phone" required />
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Adresa</label>
+            <textarea class="form-control" id="address" rows="3" required></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn-checkout">Përfundo Porosinë</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="orderSuccessModal" tabindex="-1" aria-labelledby="orderSuccessLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="orderSuccessLabel">Porosia përfundoi me sukses!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Mbyll"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p>Faleminderit për porosinë tuaj.</p>
+          <p>Brenda 5 minutave do të pranoni <br>
+            një thirrje për konfirmim porosie.</p>
+          <i class="bi bi-check-circle-fill fs-1 text-success"></i>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Mbyll</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS & Modal Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const modal = new bootstrap.Modal(document.getElementById("orderSuccessModal"));
+      modal.show();
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>

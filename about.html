@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rreth Nesh – Burger Kosova</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+    }
+
+    .navbar-brand {
+      color: #f44336 !important;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: #f44336 !important;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      margin: 2.5rem 0 1.5rem;
+      text-align: center;
+      color: #f44336;
+    }
+
+    .info-hover-box {
+      background-color: #fff;
+      border-left: 4px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .info-hover-box:hover {
+      background-color: #fcebea;
+      border-left: 4px solid #f44336;
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 768px) {
+      .info-hover-box {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3 bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🍔 Burger Kosova</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link px-3" href="index.html">Porosit</a></li>
+          <li class="nav-item"><a class="nav-link px-3 active" href="about.html">Rreth nesh</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="lokacioni.html">Lokacioni</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="galeria.html">Galeria</a></li>
+
+        </ul>
+        <a href="porosit.html" class="btn position-relative">
+          <i class="bi bi-cart4 fs-4" style="color: #f44336;"></i>
+          <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Rreth Nesh Section -->
+  <section class="container my-5">
+    <h2 class="section-title">Rreth Nesh</h2>
+    <div class="row align-items-center">
+      
+      <!-- Foto -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="images/staf.webp" alt="Ekipi jonë" class="img-fluid rounded shadow-sm" />
+      </div>
+
+      <!-- Informacione -->
+      <div class="col-md-6">
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="info-hover-box p-4 rounded shadow-sm h-100">
+              <h5 class="mb-2">🍔 Pasioni për shijen</h5>
+              <p class="mb-0">Çdo burger përgatitet me dashuri dhe përbërës të freskët që sjellin kënaqësi në çdo kafshatë.</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="info-hover-box p-4 rounded shadow-sm h-100">
+              <h5 class="mb-2">👨‍🍳 Ekipi ynë</h5>
+              <p class="mb-0">Nga kuzhinierët tek stafi i shërbimit – përkujdesemi që çdo klient të largohet i kënaqur.</p>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="info-hover-box p-4 rounded shadow-sm h-100">
+              <h5 class="mb-2">📍 Vendndodhja</h5>
+              <p class="mb-0">Ndodhemi në qendër të Podujevës – gjithmonë afër dhe gati për të shërbyer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+<footer class="bg-white border-top mt-5 py-4">
+    <div class="container text-center">
+      <p class="mb-1" style="color: #f44336; font-weight: 600;">🍔 Burger Kosova</p>
+      <p class="mb-1 text-muted">Shije e paharrueshme në çdo kafshatë</p>
+      <div class="d-flex justify-content-center gap-3 mb-2">
+        <a href="#" class="text-muted"><i class="bi bi-facebook fs-5"></i></a>
+        <a href="#" class="text-muted"><i class="bi bi-instagram fs-5"></i></a>
+        <a href="#" class="text-muted"><i class="bi bi-geo-alt-fill fs-5"></i></a>
+      </div>
+      <p class="text-muted small mb-0">&copy; 2025 Burger Kosova. Të gjitha të drejtat e rezervuara.</p>
+    </div>
+  </footer>
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cartCount = document.getElementById('cart-count');
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      cartCount.textContent = count;
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
